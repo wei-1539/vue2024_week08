@@ -103,8 +103,7 @@
                               <div class="mb-2   d-flex justify-content-between">
                                   <input type="text" class="form-control rounded-0 border-secondary w-70"
                                       placeholder="請輸入優惠碼" style="width: 70%;" v-model="couponCode">
-                                  <button type="button" class="btn btn-danger w-30 rounded-0 text-light  border-0" :class="{disabled : total < 500}" @click="useCoupon(this.couponCode, total)"
-                                      style="width: 30%;">
+                                  <button type="button" class="btn btn-danger w-30 rounded-0 text-light  border-0" :class="{disabled : total < 500}" @click="useCoupon(this.couponCode, total)">
                                       使用優惠券
                                   </button>
                               </div>
@@ -137,9 +136,15 @@
   .white-space-nowrap {
     white-space: nowrap;
   }
+  .w-30{
+    width: 30%;
+  }
   @media (max-width:768px) {
     .w-md-25{
         width: 25%;
+    }
+    .w-30{
+      width: 40%;
     }
     .text-sm{
         font-size: 0.8rem;

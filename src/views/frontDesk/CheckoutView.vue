@@ -37,16 +37,17 @@
                         </div>
                     </div>
                     <ul class="list-unstyled ">
-                        <li class="d-flex mb-4" v-for="item in carts" :key="item.id">
+                        <li class="d-flex mb-lg-4 mb-5" v-for="item in carts" :key="item.id">
                             <img :src="item.product.imageUrl"
                                 alt="" style="width: 100px; object-fit: cover;">
                             <div class="ms-4 d-flex flex-column justify-content-between w-100">
-                                <p class="mb-0 fs-4">{{item.product.title}}</p>
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-0 fs-5">NT$ {{item.product.price}}
+                                <p class="mb-0 fs-5">{{item.product.title}}</p>
+                                <div class="d-flex justify-content-between flex-column flex-lg-row">
+                                    <p class="mb-lg-0 mb-3 fs-6">NT$ {{item.product.price}}
                                       <span>x {{item.qty}} </span>
-                                      <span class="fs-6 ms-2"> / {{item.product.unit}}</span></p>
-                                    <p class="mb-0 fs-5">NT$ <span class="ms-2">{{item.final_total}}</span></p>
+                                      <span class="fs-6 ms-2"> / {{item.product.unit}}</span>
+                                    </p>
+                                    <p class="mb-0 fs-6">總計：NT$ <span class="ms-2">{{item.final_total}}</span></p>
                                 </div>
                             </div>
                         </li>
@@ -167,6 +168,7 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '@/stores/cartStore.js'
+import { useToastMessageStore } from '../../stores/toastMessage.js'
 import LoadingComponent from '../../components/LoadingComponent.vue'
 import axios from 'axios'
 const { VITE_URL, VITE_PATH } = import.meta.env
@@ -192,19 +194,28 @@ export default {
   methods: {
     // 提取方法
     ...mapActions(useCartStore, ['getCart']),
+    ...mapActions(useToastMessageStore, ['pushMessage']),
     onSubmit () {
       const api = `${VITE_URL}api/${VITE_PATH}/order`
       axios.post(api, { data: this.form })
         .then((res) => {
-          alert(res.data.message)
           // 清空表單內容
           this.$refs.form.resetForm()
           // 重新顯示購物車內容
           this.getCart()
+          this.pushMessage({
+            style: 'success',
+            title: '已建立訂單',
+            content: res.data.message
+          })
           this.$router.push(`/order/${res.data.orderId}`)
         })
         .catch((err) => {
-          alert(err.data)
+          this.pushMessage({
+            style: 'danger',
+            title: '無法建立訂單',
+            content: err.response.data.message
+          })
         })
     }
   },
