@@ -32,7 +32,7 @@
                         <h4>購物車品項</h4>
                         <button type="button" class="btn btn-outline-light px-4 rounded-pill" :class="carts.length > 0 ? 'd-inline-block' : 'd-none'" @click="removeCartAll">清空購物車</button>
                     </div>
-                    <p class="fs-5" v-if="carts.length === 0">目前沒有訂單唷！！</p>
+                    <p class="fs-2 text-center h-100 py-5  mb-0" v-if="carts.length === 0">目前沒有訂單唷！！</p>
                     <ul class="list-unstyled " v-else>
                         <li class="d-flex mb-4  pb-4 border-bottom" v-for="item in carts" :key="item.id">
                             <img :src="item.product.imageUrl" alt="" style="width: 100px; object-fit: cover;">
@@ -118,7 +118,7 @@
                             <p class="mb-0 h5 ">總計</p>
                             <p class="mb-0 h5 fw-bold">NT$ {{final_total}}</p>
                         </div>
-                        <RouterLink to="/checkout" class="btn btn-danger w-100 mt-4">下一步</RouterLink>
+                        <RouterLink to="/checkout" class="btn btn-danger w-100 mt-4" :class="{disabled: carts.length === 0}">下一步</RouterLink>
                     </div>
                 </div>
             </div>

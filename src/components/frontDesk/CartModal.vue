@@ -55,7 +55,7 @@
                         </div>
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                        <RouterLink to="/cart" class="btn btn-outline-light" @click="this.hideModal()" > 前往結賬</RouterLink>
+                        <RouterLink to="/cart" class="btn btn-outline-light" @click="this.hideModal()">前往購物車</RouterLink>
                     </div>
                 </div>
             </div>
