@@ -174,8 +174,8 @@ export default {
     ...mapState(useCartStore, ['carts', 'total', 'isLoading', 'final_total', 'couponSuccess'])
   },
   mounted () {
-    window.scrollTo({ behavior: 'smooth', top: 0 })
     this.reloadPage()
+    window.scrollTo({ behavior: 'smooth', top: 0 })
     this.getCart()
   }
 }
