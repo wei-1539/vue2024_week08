@@ -162,7 +162,14 @@ export default {
   },
   methods: {
     // 提取方法
-    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty', 'useCoupon'])
+    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty', 'useCoupon']),
+    removeBackdrop () {
+      const modalBackdrop = document.querySelector('.modal-backdrop')
+      console.log(modalBackdrop)
+      setTimeout(() => {
+        modalBackdrop.remove()
+      }, 500)
+    }
   },
   computed: {
     // 提取資料
@@ -170,6 +177,8 @@ export default {
   },
   mounted () {
     window.scrollTo({ behavior: 'smooth', top: 0 })
+    this.getCart()
+    this.removeBackdrop()
   }
 }
 </script>
