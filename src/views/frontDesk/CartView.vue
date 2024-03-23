@@ -162,7 +162,12 @@ export default {
   },
   methods: {
     // 提取方法
-    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty', 'useCoupon'])
+    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty', 'useCoupon']),
+    reloadPage () {
+      if (!this.isLoading) {
+        location.reload()
+      }
+    }
   },
   computed: {
     // 提取資料
@@ -170,6 +175,7 @@ export default {
   },
   mounted () {
     window.scrollTo({ behavior: 'smooth', top: 0 })
+    this.reloadPage()
     this.getCart()
   }
 }

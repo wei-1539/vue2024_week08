@@ -1,7 +1,7 @@
 <template>
    <!-- cart Modal S -->
     <!-- Modal -->
-    <div class="modal right fade" ref="modal"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal right fade" ref="modal"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content bg-dark text-light">
                 <div class="modal-header">
