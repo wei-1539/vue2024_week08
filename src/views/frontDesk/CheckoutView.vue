@@ -39,7 +39,7 @@
                     <ul class="list-unstyled ">
                         <li class="d-flex mb-lg-4 mb-5" v-for="item in carts" :key="item.id">
                             <img :src="item.product.imageUrl"
-                                alt="" style="width: 100px; object-fit: cover;">
+                                :alt="item.product.title" style="width: 100px; object-fit: cover;">
                             <div class="ms-4 d-flex flex-column justify-content-between w-100">
                                 <p class="mb-0 fs-5">{{item.product.title}}</p>
                                 <div class="d-flex justify-content-between flex-column flex-lg-row">
@@ -145,26 +145,6 @@
   <LoadingComponent v-model:active="isLoading" id="checkoutPage"/>
 </template>
 
-<style>
-.payCheck--active{
-  background-color: #fff;
-  color:#141414;
-}
-  #checkoutPage.vl-overlay .vl-background{
-    /* background-color: #474747; */
-    background-color: #141414;
-    opacity: 0.4;
-  }
-  .white-space-nowrap {
-    white-space: nowrap;
-  }
-  @media (max-width:768px) {
-    .text-sm{
-      font-size: 0.8rem;
-    }
-  }
-</style>
-
 <script>
 import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '@/stores/cartStore.js'
@@ -239,3 +219,23 @@ export default {
   }
 }
 </script>
+
+<style>
+.payCheck--active{
+  background-color: #fff;
+  color:#141414;
+}
+  #checkoutPage.vl-overlay .vl-background{
+    /* background-color: #474747; */
+    background-color: #141414;
+    opacity: 0.4;
+  }
+  .white-space-nowrap {
+    white-space: nowrap;
+  }
+  @media (max-width:768px) {
+    .text-sm{
+      font-size: 0.8rem;
+    }
+  }
+</style>

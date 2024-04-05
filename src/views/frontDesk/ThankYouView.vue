@@ -105,16 +105,6 @@
   {{this.orderId}}
 </template>
 
-<style>
-  .white-space-nowrap {
-    white-space: nowrap;
-  } @media (max-width:768px) {
-    .text-sm{
-      font-size: 0.8rem;
-    }
-  }
-</style>
-
 <script>
 import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '@/stores/cartStore.js'
@@ -186,3 +176,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  .white-space-nowrap {
+    white-space: nowrap;
+  } @media (max-width:768px) {
+    .text-sm{
+      font-size: 0.8rem;
+    }
+  }
+</style>

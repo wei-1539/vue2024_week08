@@ -71,7 +71,6 @@ export default {
     },
     due_date () {
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000)
-      // console.log(this.tempCoupon.due_date, this.due_date, Math.floor(new Date(this.due_date) / 1000))
     }
   }
 }

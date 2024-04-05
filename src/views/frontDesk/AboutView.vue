@@ -8,7 +8,7 @@
             <div class="row align-items-center justify-content-lg-around">
                 <div class="col-lg-6 col-12 mb-5 mb-lg-0">
                     <img src="https://images.unsplash.com/photo-1600353771864-06224b16e1a3?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="">
+                        alt="關於我們">
                 </div>
                 <div class="col-lg-5 col-12">
                     <h4 class="lh-base mb-5 text-light" style="text-align: justify;">CINEMA

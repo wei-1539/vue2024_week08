@@ -56,33 +56,10 @@
             class="mySwiper">
               <swiper-slide v-for="item in filterMovie" :key="item.id">
                 <RouterLink :to="`/product/${item.id}`">
-                  <img :src="item.imageUrl" alt="" >
+                  <img :src="item.imageUrl" :alt="item.title" >
                 </RouterLink>
               </swiper-slide>
             </swiper>
-            <!-- <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1627122699541-e9a4445aea38?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&=M3wxMjA3fDB8MHxzZWFyY2h8MTYwfHxtb3ZpZXxlbnwwfHwwfHx8MA%3D%3D"
-                            alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1627122699541-e9a4445aea38?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&=M3wxMjA3fDB8MHxzZWFyY2h8MTYwfHxtb3ZpZXxlbnwwfHwwfHx8MA%3D%3D"
-                            alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1627122699541-e9a4445aea38?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&=M3wxMjA3fDB8MHxzZWFyY2h8MTYwfHxtb3ZpZXxlbnwwfHwwfHx8MA%3D%3D"
-                            alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1627122699541-e9a4445aea38?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&=M3wxMjA3fDB8MHxzZWFyY2h8MTYwfHxtb3ZpZXxlbnwwfHwwfHx8MA%3D%3D"
-                            alt="">
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div> -->
         </div>
     </section>
   <!-- 小介紹 -->
@@ -244,72 +221,6 @@
   <LoadingComponent v-model:active="isLoading"/>
 </template>
 
-<style>
-.aboutMe {
-  position: absolute;
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: cover;
-  background-image: url(https://images.unsplash.com/photo-1706594366597-7c529d986768?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-  background-attachment: fixed;
-  filter: brightness(0.8) blur(1.5px);
-  width: 100%;
-  height: 100%;
-}
-.FV{
-  /* height: 56.25vw; */
-  height: 36vw;
-}
-.linkControl{
-  width: 90%;
-  left: 5%;
-  bottom: 10%;
-  z-index: 1;
-}
-.position{
-  position: absolute;
-}
-.swiper-slide img{
-  height: 600px;
-  object-fit: cover;
-}
-.swiper-button-prev,.swiper-button-next{
-  color:#fff;
-}
-.swiper-pagination-bullet{
-  /* background-color: #fff; */
-  border: 2px solid #fff;
-  opacity: 0.4;
-}
-.swiper-pagination-bullet-active{
-  background-color: #fff;
-  opacity: 1;
-}
-@media (max-width:992px) {
-  .aboutMe{
-      background-position: 33% center;
-      filter: brightness(0.4) blur(1.5px);
-  }
-  .position{
-  position: relative;
-  }
-  .linkControl{
-    width: 100%;
-    left: 0%;
-    bottom: 0%;
-    z-index: 1;
-  }
-  .FV{
-    height: 100%;
-    padding-bottom: 56.25%;
-  }
-  .swiper-slide img{
-    height: 550px;
-    object-fit: cover;
-  }
-}
-</style>
-
 <script>
 import { mapActions } from 'pinia'
 import { useToastMessageStore } from '../../stores/toastMessage.js'
@@ -387,3 +298,69 @@ export default {
   }
 }
 </script>
+
+<style>
+.aboutMe {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: cover;
+  background-image: url(https://images.unsplash.com/photo-1706594366597-7c529d986768?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-attachment: fixed;
+  filter: brightness(0.8) blur(1.5px);
+  width: 100%;
+  height: 100%;
+}
+.FV{
+  /* height: 56.25vw; */
+  height: 36vw;
+}
+.linkControl{
+  width: 90%;
+  left: 5%;
+  bottom: 10%;
+  z-index: 1;
+}
+.position{
+  position: absolute;
+}
+.swiper-slide img{
+  height: 600px;
+  object-fit: cover;
+}
+.swiper-button-prev,.swiper-button-next{
+  color:#fff;
+}
+.swiper-pagination-bullet{
+  /* background-color: #fff; */
+  border: 2px solid #fff;
+  opacity: 0.4;
+}
+.swiper-pagination-bullet-active{
+  background-color: #fff;
+  opacity: 1;
+}
+@media (max-width:992px) {
+  .aboutMe{
+      background-position: 33% center;
+      filter: brightness(0.4) blur(1.5px);
+  }
+  .position{
+  position: relative;
+  }
+  .linkControl{
+    width: 100%;
+    left: 0%;
+    bottom: 0%;
+    z-index: 1;
+  }
+  .FV{
+    height: 100%;
+    padding-bottom: 56.25%;
+  }
+  .swiper-slide img{
+    height: 550px;
+    object-fit: cover;
+  }
+}
+</style>

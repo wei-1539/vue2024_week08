@@ -32,7 +32,7 @@
                 </div>
                 <ul class="border-bottom py-lg-3 py-3 mx-0 list-unstyled">
                   <li v-for="item in products" :key="item.id" class="row  mb-4">
-                      <img class="product__img" :src="item.product.imageUrl">
+                      <img class="product__img" :src="item.product.imageUrl" :alt="item.product.title">
                     <div class="col d-flex flex-column justify-content-between w-100 px-4">
                       <div class="d-flex">
                         <p class="mb-0">{{item.product.title}}</p>
@@ -110,30 +110,6 @@
   </div>
   <LoadingComponent v-model:active="isLoading" id="cartPage"/>
 </template>
-
-<style>
- #cartPage.vl-overlay .vl-background{
-    /* background-color: #474747; */
-    background-color: #141414;
-    opacity: 0.4;
-  }
-  .white-space-nowrap {
-    white-space: nowrap;
-  }
-  .product__img{
-    width: 110px;
-    object-fit: cover;
-  }
-  @media (max-width:768px) {
-    .text-sm{
-      font-size: 0.8rem;
-    }
-    .product__img{
-      width: 100px;
-      object-fit: cover;
-    }
-  }
-</style>
 
 <script>
 import { mapActions } from 'pinia'
@@ -230,3 +206,27 @@ export default {
   }
 }
 </script>
+
+<style>
+ #cartPage.vl-overlay .vl-background{
+    /* background-color: #474747; */
+    background-color: #141414;
+    opacity: 0.4;
+  }
+  .white-space-nowrap {
+    white-space: nowrap;
+  }
+  .product__img{
+    width: 110px;
+    object-fit: cover;
+  }
+  @media (max-width:768px) {
+    .text-sm{
+      font-size: 0.8rem;
+    }
+    .product__img{
+      width: 100px;
+      object-fit: cover;
+    }
+  }
+</style>

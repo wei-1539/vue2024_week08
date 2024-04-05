@@ -24,7 +24,7 @@
         </thead>
         <tbody class="fs-5">
           <tr v-for="item in products" :key="item.id">
-            <td class="d-none d-sm-table-cell"><img class="img-fluid" :src="item.imageUrl" alt="" width="100"></td>
+            <td class="d-none d-sm-table-cell"><img class="img-fluid" :src="item.imageUrl" :alt="item.title" width="100"></td>
             <td >{{ item.title }}</td>
             <td class="text-center d-none d-sm-table-cell">{{ item.category }}</td>
             <td class="text-end">{{ item.origin_price }}</td>

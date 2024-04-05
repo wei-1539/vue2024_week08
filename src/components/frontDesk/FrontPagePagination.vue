@@ -4,7 +4,6 @@
       <li class="page-item " :class="{ 'disabled': pages.current_page === 1 }">
         <a class="page-link bg-dark text-light opacity-50  border-0" :class="{ 'opacity-25': pages.current_page === 1 }"
           href="#" aria-label="Previous" @click.prevent="emitPages(pages.current_page - 1)">
-          <!-- <span aria-hidden="true">&laquo;</span> -->
           <i class="bi bi-caret-left-fill"></i>
         </a>
       </li>
@@ -19,7 +18,6 @@
       <li class="page-item" :class="{ 'disabled': pages.current_page === pages.total_pages }">
         <a class="page-link bg-dark text-light opacity-50  border-0" :class="{ 'opacity-25': pages.current_page === pages.total_pages }"
           href="#" aria-label="Next" @click.prevent="emitPages(pages.current_page + 1)">
-          <!-- <span aria-hidden="true">&raquo;</span> -->
           <i class="bi bi-caret-right-fill"></i>
         </a>
       </li>
@@ -27,8 +25,6 @@
   </nav>
 </template>
 
-<style>
-</style>
 <script>
 export default {
   props: ['pages'],

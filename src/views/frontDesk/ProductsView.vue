@@ -47,61 +47,6 @@
   <LoadingComponent v-model:active="isLoading"/>
 </template>
 
-<style>
-  .imgHover img {
-      height: 450px;
-      object-fit: cover;
-      object-position: top;
-  }
-
-  .imgHover::before {
-      position: absolute;
-      content: "more detail";
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #594637;
-      opacity: 0;
-      transition: all .4s;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      font-family: "Noto Serif TC", serif;
-      letter-spacing: 4px;
-      font-size: 1.25rem;
-  }
-
-  .imgHover:hover:before {
-      background: rgb(27, 24, 23);
-      opacity: .6;
-  }
-  #productNav li{
-    transition: all .3s ;
-    /* opacity: 0.5; */
-  }
-  #productNav li:hover{
-    opacity: 1;
-  }
-  .linkActive{
-    opacity: 1 !important;
-  }
-  @media (max-width:768px) {
-    .productNavControl{
-      width: 100%;
-    }
-    .imgHover img {
-        height: 500px;
-    }
-    .nav-item {
-        width: 33.3333%;
-        display: block;
-        text-align: center;
-    }
-  }
-</style>
-
 <script>
 import { mapActions } from 'pinia'
 import { useCartStore } from '@/stores/cartStore.js'
@@ -196,3 +141,58 @@ export default {
   }
 }
 </script>
+
+<style>
+  .imgHover img {
+      height: 450px;
+      object-fit: cover;
+      object-position: top;
+  }
+
+  .imgHover::before {
+      position: absolute;
+      content: "more detail";
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #594637;
+      opacity: 0;
+      transition: all .4s;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      font-family: "Noto Serif TC", serif;
+      letter-spacing: 4px;
+      font-size: 1.25rem;
+  }
+
+  .imgHover:hover:before {
+      background: rgb(27, 24, 23);
+      opacity: .6;
+  }
+  #productNav li{
+    transition: all .3s ;
+    /* opacity: 0.5; */
+  }
+  #productNav li:hover{
+    opacity: 1;
+  }
+  .linkActive{
+    opacity: 1 !important;
+  }
+  @media (max-width:768px) {
+    .productNavControl{
+      width: 100%;
+    }
+    .imgHover img {
+        height: 500px;
+    }
+    .nav-item {
+        width: 33.3333%;
+        display: block;
+        text-align: center;
+    }
+  }
+</style>

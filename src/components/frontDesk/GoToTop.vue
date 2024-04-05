@@ -15,26 +15,6 @@
     </div>
 </template>
 
-<style>
-.toTop{
-  bottom: 2.5%;
-  right: 2.5%;
-  opacity: 0;
-  visibility: hidden;
-  transition: all .3s;
-}
-.toTop--show{
-  opacity: 1;
-  visibility: visible;
-}
-@media (max-width:992px) {
-  /* .toTop{
-    bottom: 5%;
-    right: 5%;
-  } */
-}
-</style>
-
 <script>
 import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '@/stores/cartStore.js'
@@ -61,3 +41,23 @@ export default {
   }
 }
 </script>
+
+<style>
+.toTop{
+  bottom: 2.5%;
+  right: 2.5%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+}
+.toTop--show{
+  opacity: 1;
+  visibility: visible;
+}
+@media (max-width:992px) {
+  /* .toTop{
+    bottom: 5%;
+    right: 5%;
+  } */
+}
+</style>

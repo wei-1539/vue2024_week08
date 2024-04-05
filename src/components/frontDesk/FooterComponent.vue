@@ -20,8 +20,16 @@
                     <li class="fs-4 mb-2">Find ME .</li>
                     <li class="mb-lg-2 mb-3 text-letter"><i class="bi bi-clock-history me-2 fs-5"></i>Monday – Friday <br
                             class="d-block d-lg-none"> 9 am-12 pm / 1 pm-6 pm</li>
-                    <li class="mb-lg-2 mb-3 text-letter"><i class="bi bi-envelope me-2 fs-5"></i>service@123456.com</li>
-                    <li class="mb-lg-2 mb-3 text-letter"><i class="bi bi-telephone-fill me-2 fs-5"></i>0912345678</li>
+                    <li class="mb-lg-2 mb-3 text-letter">
+                      <a href="mailto: service@123456.com" class="text-reset text-decoration-none">
+                        <i class="bi bi-envelope me-2 fs-5"></i>service@123456.com
+                      </a>
+                    </li>
+                    <li class="mb-lg-2 mb-3 text-letter">
+                      <a href="tel:0912345678" class="text-reset text-decoration-none">
+                        <i class="bi bi-telephone-fill me-2 fs-5"></i>0912345678
+                      </a>
+                    </li>
                     <li class="mb-lg-2 mb-3 text-letter">可透過客服信箱 / 訂單留言 / 臉書私訊<br class="d-block d-lg-none"> 與 客服聯絡</li>
                 </ul>
             </div>

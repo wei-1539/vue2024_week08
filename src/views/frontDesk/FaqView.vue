@@ -87,6 +87,14 @@
     </section>
 </template>
 
+<script>
+export default {
+  mounted () {
+    window.scrollTo({ behavior: 'smooth', top: 0 })
+  }
+}
+</script>
+
 <style>
   .faqControl{
     padding: 0 0 10% 0;
@@ -113,11 +121,3 @@
     backdrop-filter: blur(1.5px);
   }
 </style>
-
-<script>
-export default {
-  mounted () {
-    window.scrollTo({ behavior: 'smooth', top: 0 })
-  }
-}
-</script>

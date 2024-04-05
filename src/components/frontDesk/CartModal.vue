@@ -7,13 +7,11 @@
                 <div class="modal-header">
                     <h4 class="modal-title border-3 border-bottom border-danger" id="exampleModalLabel">購物清單預覽</h4>
                     <div class="d-flex">
-                      <div class="btn btn-outline-light  me-lg-2 me-1" @click="removeCartAll">清除全部</div>
+                      <div class="btn btn-outline-light  me-lg-2 me-1" @click="removeCartAll" :class="{'disabled': carts.length === 0}">清除全部</div>
                       <div class="btn btn-outline-light " data-bs-dismiss="modal" aria-label="Close">
-                        <!-- <i class="bi bi-x-circle"></i> -->
                         關閉
                       </div>
                     </div>
-                    <!-- <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
                 <div class="modal-body pt-0">
                   <p class="fs-5 py-2" v-if="carts.length === 0">目前沒有訂單唷！！</p>
@@ -53,9 +51,7 @@
                             <p class="m-0">總金額</p>
                             <p class="m-0">NT$ {{total}}</p>
                         </div>
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                        <RouterLink to="/cart" class="btn btn-outline-light" @click="hideModal()">前往購物車</RouterLink>
+                        <RouterLink to="/cart" class="btn btn-outline-light" @click="hideModal()" :class="{'disabled': carts.length === 0}">前往購物車</RouterLink>
                     </div>
                 </div>
             </div>
@@ -64,6 +60,34 @@
     <!-- cart Modal E -->
     <LoadingComponent v-model:active="isLoading" id="cartModal"/>
 </template>
+
+<script>
+import { mapActions, mapState } from 'pinia'
+import { useCartStore } from '@/stores/cartStore.js'
+import LoadingComponent from '../../components/LoadingComponent.vue'
+// 載入Modal的方法
+import modalMixin from '../../mixins/modalMixin.js'
+
+export default {
+  components: {
+    LoadingComponent
+  },
+  mixins: [modalMixin],
+  data () {
+    return {
+      tempCart: {}
+    }
+  },
+  methods: {
+    // 提取方法
+    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty'])
+  },
+  computed: {
+    // 提取資料
+    ...mapState(useCartStore, ['carts', 'total', 'isLoading'])
+  }
+}
+</script>
 
 <style>
 #cartModal.vl-overlay .vl-background{
@@ -102,31 +126,3 @@
     border: none
 }
 </style>
-
-<script>
-import { mapActions, mapState } from 'pinia'
-import { useCartStore } from '@/stores/cartStore.js'
-import LoadingComponent from '../../components/LoadingComponent.vue'
-// 載入Modal的方法
-import modalMixin from '../../mixins/modalMixin.js'
-
-export default {
-  components: {
-    LoadingComponent
-  },
-  mixins: [modalMixin],
-  data () {
-    return {
-      tempCart: {}
-    }
-  },
-  methods: {
-    // 提取方法
-    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty'])
-  },
-  computed: {
-    // 提取資料
-    ...mapState(useCartStore, ['carts', 'total', 'isLoading'])
-  }
-}
-</script>

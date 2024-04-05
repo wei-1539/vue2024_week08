@@ -23,7 +23,7 @@
                     </nav>
                   <img class="w-75 mx-auto" style="object-fit=cover"
                         :src="product.imageUrl"
-                        alt="">
+                        :alt="product.title">
                 </div>
                 <div class="col-md-5">
                     <nav aria-label="breadcrumb ">

@@ -38,7 +38,6 @@ export default {
   watch: {
     loadingStatus () {
       this.isLoading = this.loadingStatus
-      console.log(this.loadingStatus)
     }
   }
 }

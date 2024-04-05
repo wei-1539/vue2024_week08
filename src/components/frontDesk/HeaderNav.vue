@@ -10,7 +10,7 @@
               <button class="navbar-toggler border-0" type="button" @click="bsToggle">
                   <span class="navbar-toggler-icon"></span>
               </button>
-              <a href="#" class="btn btn-outline-light border-0 border-none position-relative d-block d-lg-none "  data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <a href="#" class="btn btn-outline-light border-0 border-none position-relative d-block d-lg-none "  @click="openCartModal">
                   <i class="bi bi-film fs-3 "></i>
                   <span
                       class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -22,13 +22,6 @@
             <div class="collapse navbar-collapse"  ref="navbar">
               <!-- SP -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-block d-md-none">
-                    <!-- <li class="nav-item my-3 position-relative d-block d-lg-none">
-                        <input type="text" name="" id="" class="form-control py-1 px-3  m-lg-1 fs-7 rounded-pill"
-                            placeholder="請輸入標題或分類">
-                        <a href="#" class="nav-link position-absolute end-0 top-50 translate-middle-y searchIcon" @click="bsToggle">
-                            <i class="bi bi-search text-dark fs-5"></i>
-                        </a>
-                    </li> -->
                     <li class="nav-item ">
                         <RouterLink class="nav-link" aria-current="page" to="/about" @click="bsToggle">關於我們</RouterLink>
                     </li>
@@ -68,13 +61,6 @@
                       </li>
                   </ul>
                   <ul class="navbar-nav d-none d-lg-flex">
-                      <!-- <li class="nav-item me-4 position-relative">
-                          <input type="text" class="form-control border-0 bg-dark py-1 px-3 mt-3 m-lg-1 fs-7 rounded-pill text-light"
-                              placeholder="請輸入標題或分類">
-                          <a href="#" class="nav-link position-absolute end-0 top-50 translate-middle-y">
-                              <i class="bi bi-search  fs-5"></i>
-                          </a>
-                      </li> -->
                       <li class="nav-item ">
                           <div class="btn btn-outline-light border-0 border-none position-relative p-0  px-2" @click="openCartModal" >
                               <i class="bi bi-film fs-3 "></i>

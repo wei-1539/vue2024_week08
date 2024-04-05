@@ -35,7 +35,7 @@
                     <p class="fs-2 text-center h-100 py-5  mb-0" v-if="carts.length === 0">目前沒有訂單唷！！</p>
                     <ul class="list-unstyled " v-else>
                         <li class="d-flex mb-4  pb-4 border-bottom" v-for="item in carts" :key="item.id">
-                            <img :src="item.product.imageUrl" alt="" style="width: 100px; object-fit: cover;">
+                            <img :src="item.product.imageUrl" :alt="item.product.title" style="width: 100px; object-fit: cover;">
                             <div class="ms-4 d-flex flex-column justify-content-between w-100">
                                 <div class="d-flex justify-content-between">
                                     <p class="mb-0 fs-4">{{item.product.title}}</p>
@@ -75,20 +75,6 @@
                 <div class="col-md-4">
                     <div class="border p-4 mb-4">
                         <h4 class="fw-bold mb-4 pb-3 border-bottom">訂單資訊</h4>
-
-                        <!-- <table class="table text-muted border-bottom">
-                            <tbody>
-                                <tr>
-                                    <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">小計</th>
-                                    <td class="text-end border-0 px-0 pt-4">NT$24,000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="border-0 px-0 pt-0 pb-4 font-weight-normal">折扣</th>
-                                    <td class="text-end border-0 px-0 pt-0 pb-4">ApplePay</td>
-                                </tr>
-                            </tbody>
-                        </table> -->
-
                         <div class="pb-4 border-bottom border-light border-opacity-10 mb-4">
                             <div class="mb-2 d-flex justify-content-between">
                                 <p class="mb-0">目前數量</p>
@@ -127,6 +113,34 @@
 <LoadingComponent v-model:active="isLoading" id="cartPage"/>
 </template>
 
+<script>
+import { mapActions, mapState } from 'pinia'
+import { useCartStore } from '@/stores/cartStore.js'
+import LoadingComponent from '../../components/LoadingComponent.vue'
+export default {
+  components: {
+    LoadingComponent
+  },
+  data () {
+    return {
+      couponCode: ''
+    }
+  },
+  methods: {
+    // 提取方法
+    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty', 'useCoupon'])
+  },
+  computed: {
+    // 提取資料
+    ...mapState(useCartStore, ['carts', 'total', 'isLoading', 'final_total', 'couponSuccess'])
+  },
+  mounted () {
+    window.scrollTo({ behavior: 'smooth', top: 0 })
+    this.getCart()
+  }
+}
+</script>
+
 <style>
   #cartPage.vl-overlay .vl-background{
     /* background-color: #474747; */
@@ -151,37 +165,3 @@
     }
   }
 </style>
-
-<script>
-import { mapActions, mapState } from 'pinia'
-import { useCartStore } from '@/stores/cartStore.js'
-import LoadingComponent from '../../components/LoadingComponent.vue'
-export default {
-  components: {
-    LoadingComponent
-  },
-  data () {
-    return {
-      couponCode: ''
-    }
-  },
-  methods: {
-    // 提取方法
-    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty', 'useCoupon']),
-    reloadPage () {
-      if (!this.isLoading) {
-        location.reload()
-      }
-    }
-  },
-  computed: {
-    // 提取資料
-    ...mapState(useCartStore, ['carts', 'total', 'isLoading', 'final_total', 'couponSuccess'])
-  },
-  mounted () {
-    this.reloadPage()
-    window.scrollTo({ behavior: 'smooth', top: 0 })
-    this.getCart()
-  }
-}
-</script>
