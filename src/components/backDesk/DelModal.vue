@@ -49,7 +49,7 @@
 
 <script>
 // 載入Modal的方法
-import modalMixin from '../../mixins/modalMixin.js';
+import modalMixin from '../../mixins/modalMixin.js'
 
 export default {
   props: ['outItem'],
