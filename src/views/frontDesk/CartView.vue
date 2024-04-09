@@ -37,16 +37,16 @@
                         <li class="d-flex mb-4  pb-4 border-bottom" v-for="item in carts" :key="item.id">
                             <img :src="item.product.imageUrl" :alt="item.product.title" style="width: 100px; object-fit: cover;">
                             <div class="ms-4 d-flex flex-column justify-content-between w-100">
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between  mb-2 mb-lg-0">
                                     <p class="mb-0 fs-4">{{item.product.title}}</p>
                                     <i class="bi bi-trash fs-5 btn btn-outline-light border-0 d-lg-block d-none"  @click="removeCartItem(item.id)"></i>
                                 </div>
 
-                                <div class="d-flex justify-content-md-start justify-content-between align-items-center ">
-                                    <p class="mb-0 fs-6  mb-0 me-md-5 me-0">NT$ {{item.product.price}}
+                                <div class="d-flex flex-column flex-md-row align-items-lg-center ">
+                                    <p class="mb-0 fs-6  mb-2 mb-lg-0 me-md-5 me-0">NT$ {{item.product.price}}
                                         <span class=""> / {{item.product.unit}}</span>
                                     </p>
-                                    <div class="input-group pe-md-5 pe-0 w-md-25 w-50">
+                                    <div class="input-group pe-md-5 pe-0 w-md-50 ">
                                         <!-- - -->
                                         <div class="input-group-prepend">
                                             <button class="btn btn-outline-light border-0 py-2" type="button" :disabled="item.qty === 1" @click="item.qty--;changeCartQty(item.id,item.qty)">
@@ -153,9 +153,10 @@ export default {
   .w-30{
     width: 30%;
   }
+  .w-md-50{width: 50%;}
   @media (max-width:768px) {
-    .w-md-25{
-        width: 25%;
+    .w-md-50{
+        width: 100%;
     }
     .w-30{
       width: 40%;

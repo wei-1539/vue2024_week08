@@ -14,7 +14,7 @@
                             CINEMA是什麼？
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse fs-5" aria-labelledby="headingOne"
+                    <div id="collapseOne" class="accordion-collapse collapse fs-6" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             CINEMA是串流服務，透過數千種可連結網路的行動裝置，提供各種獲獎的電影。<br><br>只要支付一筆經濟實惠的月費，就能隨時隨地，盡情觀賞，毫無廣告。時時都有新的內容供您探索，而且每星期都會加入新的電影！
@@ -29,7 +29,7 @@
                             可以在 CINEMA 觀賞什麼內容？
                         </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse fs-5" aria-labelledby="headingTwo"
+                    <div id="collapseTwo" class="accordion-collapse collapse fs-6" aria-labelledby="headingTwo"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             CINEMA 擁有豐富的影片內容庫，包括長片、紀錄片、動作片、動畫變、獲獎肯定的原創作品與更多內容。隨時隨地，盡情觀賞。
@@ -44,7 +44,7 @@
                             如何取消訂閱？
                         </button>
                     </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse fs-5" aria-labelledby="headingThree"
+                    <div id="collapseThree" class="accordion-collapse collapse fs-6" aria-labelledby="headingThree"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             CINEMA 彈性十足。沒有難懂的合約，也不須綁約。點個兩下，就能線上輕鬆取消您的帳戶。無取消費用，可隨時開始或停用您的帳戶。
@@ -59,7 +59,7 @@
                             我可以在哪裡觀看 CINEMA ?
                         </button>
                     </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse fs-5" aria-labelledby="headingFour"
+                    <div id="collapseFour" class="accordion-collapse collapse fs-6" aria-labelledby="headingFour"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             您可透過行動裝置、網路瀏覽器、遊戲主機、機上盒和智慧型電視使用 CINEMA 應用程式。
@@ -74,7 +74,7 @@
                             CINEMA 適合兒童觀看嗎?
                         </button>
                     </h2>
-                    <div id="collapseFive" class="accordion-collapse collapse fs-5" aria-labelledby="headingFive"
+                    <div id="collapseFive" class="accordion-collapse collapse fs-6" aria-labelledby="headingFive"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             CINEMA 兒童體驗包含在您的會員資格裡，可讓家長控制觀賞內容，確保孩子能在自己的小天地盡情享受老少咸宜的節目與電影。

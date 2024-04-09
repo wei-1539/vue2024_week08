@@ -8,17 +8,17 @@
                         <ol class="breadcrumb d-lg-none bg-dark px-0 mb-3 ">
                             <li class="breadcrumb-item opacity-50 ">
                               <RouterLink to="/" class="text-light text-decoration-none">
-                                Home
+                                首頁
                               </RouterLink>
                             </li>
                             <li class="opacity-25 px-2">/</li>
                             <li class="breadcrumb-item opacity-50 ">
                               <RouterLink to="/products" class="text-light text-decoration-none" >
-                                Product
+                                電影選單
                               </RouterLink>
                             </li>
                             <li class="opacity-25 px-2">/</li>
-                            <li class="breadcrumb-item " aria-current="page">Detail</li>
+                            <li class="breadcrumb-item " aria-current="page">明細</li>
                         </ol>
                     </nav>
                   <img class="w-75 mx-auto" style="object-fit=cover"
@@ -30,17 +30,17 @@
                         <ol class="breadcrumb bg-dark px-0 mb-2 d-none d-lg-flex ">
                             <li class="breadcrumb-item opacity-50 ">
                               <RouterLink to="/" class="text-light text-decoration-none">
-                                Home
+                                首頁
                               </RouterLink>
                             </li>
                             <li class="opacity-25 px-2">/</li>
                             <li class="breadcrumb-item opacity-50 ">
                               <RouterLink to="/products" class="text-light text-decoration-none" >
-                                Product
+                                電影選單
                               </RouterLink>
                             </li>
                             <li class="opacity-25 px-2">/</li>
-                            <li class="breadcrumb-item " aria-current="page">Detail</li>
+                            <li class="breadcrumb-item " aria-current="page">明細</li>
                         </ol>
                     </nav>
                     <!--  電影資訊 -->
@@ -101,6 +101,36 @@
                 :src="`${product.youtubeLink}?rel=0&showinfo=0&color=white`"
                 title="YouTube video player" frameborder="0" allow=" autoplay; " allowfullscreen></iframe>
             </div>
+            <!-- 推薦電影 -->
+            <section class=" pt-8">
+                <div class="container bg-dark">
+                    <h2 class="text-light mb-lg-4 mb-3 ps-lg-3 ps-2 border-3  border-start border-danger">推薦電影</h2>
+                    <!-- Swiper -->
+                    <swiper
+                    :modules="modules"
+                    :pagination="true"
+                    :navigation="true"
+                    :loop="true"
+                    :speed="1500"
+                    :autoplay="{
+                      delay: 2500,
+                      disableOnInteraction: false,
+                    }"
+                    :space-between="30"
+                    :slidesPerView="1"
+                    :breakpoints="{
+                      '960': {
+                    slidesPerView: 3
+                    },}"
+                    class="mySwiper">
+                      <swiper-slide v-for="item in filterMovie" :key="item.id">
+                        <RouterLink :to="`/product/${item.id}`" @click="reload">
+                          <img :src="item.imageUrl" :alt="item.title" >
+                        </RouterLink>
+                      </swiper-slide>
+                    </swiper>
+                </div>
+            </section>
         </div>
     </section>
   </div>
@@ -111,18 +141,32 @@
 import { mapActions } from 'pinia'
 import { useCartStore } from '../../stores/cartStore.js'
 import { useToastMessageStore } from '../../stores/toastMessage.js'
+
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import LoadingComponent from '../../components/LoadingComponent.vue'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import axios from 'axios'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   components: {
+    Swiper,
+    SwiperSlide,
     LoadingComponent
   },
   data () {
     return {
+      modules: [Autoplay, Pagination, Navigation],
       product: {},
       newContentTitle: '',
       newContent: [],
+      filterMovie: [],
       // loadingd控制
       isLoading: false,
       qty: 1
@@ -132,6 +176,7 @@ export default {
     ...mapActions(useCartStore, ['addToCart', 'changeCartQty']),
     ...mapActions(useToastMessageStore, ['pushMessage']),
     getProduct () {
+      this.getCategoryData()
       const { id } = this.$route.params
       const api = `${VITE_URL}api/${VITE_PATH}/product/${id}`
       this.isLoading = true
@@ -163,11 +208,81 @@ export default {
       this.newContentTitle = newArray[0]
       newArray.shift()
       this.newContent = newArray
+    },
+    // 篩選相關電影
+    getCategoryData () {
+      const api = `${VITE_URL}api/${VITE_PATH}/products/all`
+      let newFilterArray = null
+      axios.get(api)
+        .then((res) => {
+          newFilterArray = res.data.products.filter(item => item.category === this.product.category && item.title !== this.product.title)
+          // this.filterMovie = this.getRandomItems(newFilterArray, 5)
+          this.filterMovie = newFilterArray
+        })
+        .catch((err) => {
+          this.pushMessage({
+            style: 'danger',
+            title: '產品資訊取得失敗',
+            content: err.response.data.message
+          })
+        })
+        .finally(() => {
+          setTimeout(() => {
+            this.isLoading = false
+          }, 500)
+        })
+    },
+    // 隨機取出5筆資料
+    // getRandomItems (arr, count) {
+    //   const result = []
+    //   const arrayCopy = arr.slice() // 复制原始数组以免修改原数组
+    //   for (let i = 0; i < count; i++) {
+    //     const randomIndex = Math.floor(Math.random() * arrayCopy.length) // 随机生成一个索引
+    //     const randomItem = arrayCopy.splice(randomIndex, 1)[0] // 从数组中取出该索引对应的元素，并从原数组中移除
+    //     result.push(randomItem) // 将取出的元素放入结果数组中
+    //   }
+    //   return result
+    // },
+    reload () {
+      window.scrollTo({ behavior: 'smooth', top: 0 })
     }
   },
   mounted () {
     this.getProduct()
     window.scrollTo({ behavior: 'smooth', top: 0 })
+  },
+  created () {
+    this.$watch(
+      () => this.$route.params,
+      () => {
+        this.getProduct()
+      }
+    )
   }
 }
 </script>
+
+<style>
+.swiper-slide img{
+  height: 500px;
+  object-fit: cover;
+}
+.swiper-button-prev,.swiper-button-next{
+  color:#fff;
+}
+.swiper-pagination-bullet{
+  /* background-color: #fff; */
+  border: 2px solid #fff;
+  opacity: 0.4;
+}
+.swiper-pagination-bullet-active{
+  background-color: #fff;
+  opacity: 1;
+}
+@media (max-width:992px) {
+  .swiper-slide img{
+    height: 550px;
+    object-fit: cover;
+  }
+}
+</style>

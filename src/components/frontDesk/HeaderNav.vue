@@ -31,10 +31,10 @@
                     <li class="nav-item ">
                         <RouterLink class="nav-link" to="/faq" @click="bsToggle">常見問題</RouterLink>
                     </li>
-                    <li class="nav-item ">
+                    <!-- <li class="nav-item ">
                         <RouterLink class="nav-link" v-if="token === ''"  to="/login" @click="bsToggle">登入後台</RouterLink>
                         <RouterLink class="nav-link" v-else to="/admin/product" @click="bsToggle">進入後台</RouterLink>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- PC -->
                 <div class="d-none d-md-flex w-100">
@@ -55,10 +55,10 @@
                       <li class="nav-item ">
                           <RouterLink class="nav-link" to="/faq">常見問題</RouterLink>
                       </li>
-                      <li class="nav-item ">
+                      <!-- <li class="nav-item ">
                           <RouterLink class="nav-link" v-if="token === ''"  to="/login">登入後台</RouterLink>
                           <RouterLink class="nav-link" v-else to="/admin/product">進入後台</RouterLink>
-                      </li>
+                      </li> -->
                   </ul>
                   <ul class="navbar-nav d-none d-lg-flex">
                       <li class="nav-item ">

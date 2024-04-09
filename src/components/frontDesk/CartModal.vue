@@ -5,16 +5,19 @@
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content bg-dark text-light">
                 <div class="modal-header">
-                    <h4 class="modal-title border-3 border-bottom border-danger" id="exampleModalLabel">購物清單預覽</h4>
+                    <h4 class="modal-title border-3 border-bottom border-danger" id="exampleModalLabel">購物清單</h4>
                     <div class="d-flex">
-                      <div class="btn btn-outline-light  me-lg-2 me-1" @click="removeCartAll" :class="{'disabled': carts.length === 0}">清除全部</div>
+                      <div class="btn btn-outline-light  me-lg-2 me-1" @click="openRemoveAllModal" :class="{'disabled': carts.length === 0}">清除全部</div>
                       <div class="btn btn-outline-light " data-bs-dismiss="modal" aria-label="Close">
                         關閉
                       </div>
                     </div>
                 </div>
                 <div class="modal-body pt-0">
-                  <p class="fs-5 py-2" v-if="carts.length === 0">目前沒有訂單唷！！</p>
+                    <div v-if="carts.length === 0" class="position-absolute w-100 top-50 start-50 translate-middle d-flex flex-column justify-content-center align-items-center">
+                        <p class="fs-4 py-2" >目前沒有訂單唷！！</p>
+                        <RouterLink to="/products" @click="hideModal()" class="btn btn-outline-light f-5 w-50">前往電影選單</RouterLink>
+                    </div>
                     <ul class="list-unstyled m-0" v-else>
                         <li class="row py-2 border-bottom" v-for="item in carts" :key="item.id">
                             <img style="width: 80px;" class="col-2"  :src="item.product.imageUrl" alt="">
@@ -59,6 +62,7 @@
     </div>
     <!-- cart Modal E -->
     <LoadingComponent v-model:active="isLoading" id="cartModal"/>
+    <DelAllModal  @remove-data="closeRemoveAllModal" ref="delAllModal"/>
 </template>
 
 <script>
@@ -67,10 +71,12 @@ import { useCartStore } from '@/stores/cartStore.js'
 import LoadingComponent from '../../components/LoadingComponent.vue'
 // 載入Modal的方法
 import modalMixin from '../../mixins/modalMixin.js'
+import DelAllModal from './DelAllModal.vue'
 
 export default {
   components: {
-    LoadingComponent
+    LoadingComponent,
+    DelAllModal
   },
   mixins: [modalMixin],
   data () {
@@ -80,7 +86,15 @@ export default {
   },
   methods: {
     // 提取方法
-    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty'])
+    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty']),
+    openRemoveAllModal () {
+      this.$refs.delAllModal.openModal()
+    },
+    closeRemoveAllModal () {
+      this.removeCartAll()
+      this.$refs.delAllModal.hideModal()
+    }
+
   },
   computed: {
     // 提取資料

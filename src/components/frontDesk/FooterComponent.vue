@@ -35,13 +35,36 @@
             </div>
         </div>
         <div class="d-flex justify-content-between align-items-center border-top p-3">
-            <ul class="list-unstyled d-flex   m-0">
+            <ul class="list-unstyled d-flex align-items-center  m-0">
                 <li class="me-3"><i class="bi bi-instagram fs-5"></i></li>
                 <li class="me-3"><i class="bi bi-twitter fs-5"></i></li>
-                <li><i class="bi bi-facebook fs-5"></i></li>
+                <li class="me-3"><i class="bi bi-facebook fs-5"></i></li>
+                <li >
+                  <RouterLink v-if="token === ''"  to="/login" class="btn-outline-light btn border-0">登入後台</RouterLink>
+                  <RouterLink v-else to="/admin/product" class="btn-outline-light btn border-0">進入後台</RouterLink>
+                </li>
             </ul>
             <p class="m-0 text-center text-letter">個人作業使用，無商業行為</p>
         </div>
     </div>
   </footer>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      token: ''
+    }
+  },
+  methods: {
+    check () {
+      // 取出token
+      this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexSchool\s*=\s*([^;]*).*$)|^.*$/, '$1')
+    }
+  },
+  created () {
+    this.check()
+  }
+}
+</script>

@@ -17,26 +17,26 @@
             <ul class="row list-unstyled mb-0">
                 <li class="col-lg-3" v-for="item in products" :key="item.id" data-aos="fade-right" >
                     <div class="card rounded-2 overflow-hidden border-0 mb-4 position-relative position-relative">
-                        <div class="position-relative">
-                            <RouterLink :to="`/product/${item.id}`" href="" class="imgHover">
-                                <img :src="item.imageUrl" class="card-img-top rounded-0" alt="...">
-                            </RouterLink>
-                        </div>
-                        <!-- 收藏最愛 -->
-                        <!-- <a href="#" class="text-dark">
-                            <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
-                        </a> -->
-                        <div class="card-body p-0 text-center">
-                            <h5 class="mb-0 mt-3 text-muted ">{{item.title}}</h5>
-                            <div class="d-flex  justify-content-center align-items-center my-2">
-                              <p class="mb-0 text-danger fw-bold fs-5" v-if="item.origin_price === item.price">NT$ {{item.price}}</p>
-                              <div v-else>
-                                <del class="text-muted  me-3">NT$ {{item.origin_price}}</del>
-                                <p class="mb-0 text-danger fw-bold fs-5 d-inline-block">NT$ {{item.price}}</p>
+                        <RouterLink :to="`/product/${item.id}`" href=""  class="text-decoration-none">
+                          <div class="position-relative imgHover">
+                            <img :src="item.imageUrl" class="card-img-top rounded-0" alt="...">
+                          </div>
+                          <!-- 收藏最愛 -->
+                          <!-- <a href="#" class="text-dark">
+                              <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
+                          </a> -->
+                          <div class="card-body p-0 text-center">
+                              <h5 class="mb-0 mt-3 text-muted ">{{item.title}}</h5>
+                              <div class="d-flex  justify-content-center align-items-center my-2">
+                                <p class="mb-0 text-danger fw-bold fs-5" v-if="item.origin_price === item.price">NT$ {{item.price}}</p>
+                                <div v-else>
+                                  <del class="text-muted  me-3">NT$ {{item.origin_price}}</del>
+                                  <p class="mb-0 text-danger fw-bold fs-5 d-inline-block">NT$ {{item.price}}</p>
+                                </div>
                               </div>
-                            </div>
-                            <button class="btn btn-outline-danger mb-3" @click="this.addToCart(item.id)">加入購物車</button>
-                        </div>
+                          </div>
+                        </RouterLink>
+                        <button class="btn btn-outline-danger mb-3 w-50 mx-auto " @click="this.addToCart(item.id)">加入購物車</button>
                     </div>
                 </li>
             </ul>

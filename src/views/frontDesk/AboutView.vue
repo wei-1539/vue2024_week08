@@ -14,7 +14,7 @@
                     <h4 class="lh-base mb-5 text-light" style="text-align: justify;">CINEMA
                         致力於為全球用戶提供最佳的娛樂體驗。我們擁有豐富的內容庫，包括獨家原創影視作品、最新院線大片和經典電影。我們的團隊致力於打造出色的用戶界面和優質的服務，讓您無論身在何處，都能輕鬆享受您喜愛的節目和電影。
                     </h4>
-                    <RouterLink to='/products' class="btn btn-outline-danger ">SHOP NOW</RouterLink>
+                    <RouterLink to='/products' class="btn btn-outline-danger d-block d-lg-inline-block ">前往電影選單</RouterLink>
                 </div>
             </div>
           </div>

@@ -21,7 +21,7 @@
                           <a href="#" class="fs-5 text-decoration-none btn btn-outline-light"><i class="bi bi-exclamation-circle d-inline-block me-2"></i>更多資訊</a>
                       </div> -->
                   <!-- </div> -->
-                  <RouterLink :to="`/product/${firstMovie.id}`" class="fs-5 text-decoration-none btn btn-outline-light"><i class="bi bi-exclamation-circle d-inline-block me-2"></i>更多資訊</RouterLink>
+                  <RouterLink :to="`/product/${firstMovie.id}`" class="fs-5 text-decoration-none btn btn-light"><i class="bi bi-exclamation-circle d-inline-block me-2"></i>更多資訊</RouterLink>
                   <!-- <button type="button" id="play-mute-btn"
                       class="fs-5 btn btn-outline-light rounded-circle" style="bottom: 25%;">
                       <i class="bi bi-volume-mute"></i>

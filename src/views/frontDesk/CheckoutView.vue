@@ -28,10 +28,10 @@
                     class="bi bi-caret-left-fill"></i>返回購物車</RouterLink>
             <div class="row">
                 <div class="col-md-8 mb-8 mb-lg-0">
-                    <div class="d-flex flex-lg-row flex-column justify-content-between mb-4 pb-2 border-bottom">
-                        <p class="fs-4 mb-lg-0 mb-2 ">目前有 {{carts.length}} 部</p>
-                        <div class=" d-flex align-items-center justify-content-between">
-                          <p class="mb-0 me-3 bg-danger rounded-1 px-2">已折抵 - NT$ {{total - final_total}}</p>
+                    <div class="d-lg-flex  justify-content-between mb-4 pb-2 border-bottom">
+                        <p class="fs-4 mb-lg-0 mb-3 ">目前有 {{carts.length}} 部</p>
+                        <div class=" d-lg-flex flex-lg-row flex-column align-items-lg-center justify-content-between">
+                          <p class=" mb-lg-0 mb-3 me-3 bg-danger rounded-1 px-2 d-inline-block">已折抵 - NT$ {{total - final_total}}</p>
                           <p class="fs-4 mb-0 ">總金額：<span class="ms-3  ">NT$ {{final_total}}</span>
                           </p>
                         </div>

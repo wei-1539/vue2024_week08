@@ -2,7 +2,7 @@
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end m-0">
       <li class="page-item " :class="{ 'disabled': pages.current_page === 1 }">
-        <a class="page-link bg-dark text-light opacity-50  border-0" :class="{ 'opacity-25': pages.current_page === 1 }"
+        <a class="page-link bg-dark text-light border-0" :class="[ pages.current_page === 1 ? 'opacity-15' : 'opacity-25']"
           href="#" aria-label="Previous" @click.prevent="emitPages(pages.current_page - 1)">
           <i class="bi bi-caret-left-fill"></i>
         </a>
@@ -16,7 +16,7 @@
         <a class="page-link bg-dark text-light opacity-50  border-0" href="#" v-else @click.prevent="emitPages(item)">{{ item }}</a>
       </li>
       <li class="page-item" :class="{ 'disabled': pages.current_page === pages.total_pages }">
-        <a class="page-link bg-dark text-light opacity-50  border-0" :class="{ 'opacity-25': pages.current_page === pages.total_pages }"
+        <a class="page-link bg-dark text-light border-0" :class="[ pages.current_page === pages.total_pages ?'opacity-15' : 'opacity-25' ]"
           href="#" aria-label="Next" @click.prevent="emitPages(pages.current_page + 1)">
           <i class="bi bi-caret-right-fill"></i>
         </a>
@@ -35,3 +35,9 @@ export default {
   }
 }
 </script>
+
+<style >
+  .opacity-15{
+    opacity: .15 !important;
+  }
+</style>
