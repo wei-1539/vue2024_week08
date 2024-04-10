@@ -211,10 +211,14 @@ export default {
     },
     // 篩選相關電影
     getCategoryData () {
+      const { id } = this.$route.params
       const api = `${VITE_URL}api/${VITE_PATH}/products/all`
       let newFilterArray = null
+      this.isLoading = true
       axios.get(api)
         .then((res) => {
+          this.product = res.data.products.find(item => item.id === id)
+          this.content()
           newFilterArray = res.data.products.filter(item => item.category === this.product.category && item.title !== this.product.title)
           // this.filterMovie = this.getRandomItems(newFilterArray, 5)
           this.filterMovie = newFilterArray
@@ -248,7 +252,8 @@ export default {
     }
   },
   mounted () {
-    this.getProduct()
+    // this.getProduct()
+    this.getCategoryData()
     window.scrollTo({ behavior: 'smooth', top: 0 })
   },
   created () {
