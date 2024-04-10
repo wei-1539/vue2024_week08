@@ -260,7 +260,8 @@ export default {
     this.$watch(
       () => this.$route.params,
       () => {
-        this.getProduct()
+        // this.getProduct()
+        this.getCategoryData()
       }
     )
   }
