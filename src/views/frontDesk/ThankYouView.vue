@@ -31,11 +31,11 @@
                         <p class="mb-1 fs-4">我們會盡快將產品送到您的手上，希望您會喜歡！ </p>
                         <p class="mb-6 fs-6"> 如有任何問題，可點擊上方常見問題</p>
                         <div class="d-flex flex-column flex-lg-row justify-content-center">
-                            <RouterLink to="/products"  class="py-2 rounded-pill d-inline-block btn btn-light me-0 me-md-4 mb-4 mb-md-0 ">
-                                繼續購物
-                            </RouterLink>
-                            <RouterLink to="/" class="btn btn-outline-light py-2 rounded-pill ">
+                            <RouterLink to="/" class="btn btn-outlined-light  py-2 rounded-pill me-0 me-md-4 mb-4 mb-md-0  ">
                                 回到首頁
+                            </RouterLink>
+                            <RouterLink to="/products"  class="py-2 rounded-pill d-inline-block btn btn-light ">
+                                繼續購物
                             </RouterLink>
                         </div>
                     </div>

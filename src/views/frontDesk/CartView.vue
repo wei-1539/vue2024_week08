@@ -26,11 +26,11 @@
 
             <RouterLink to="/products" class=" btn btn-outline-light rounded-pill text-decoration-none mb-4 d-inline-block"><i
                     class="bi bi-caret-left-fill"></i>繼續購物</RouterLink>
-            <div class="row">
+            <div class="row gx-5">
                 <div class="col-md-8 mb-8 mb-lg-0">
                     <div class="d-flex justify-content-between mb-4">
                         <h4>購物車品項</h4>
-                        <button type="button" class="btn btn-outline-light px-4 rounded-pill" :class="carts.length > 0 ? 'd-inline-block' : 'd-none'" @click="removeCartAll">清空購物車</button>
+                        <button type="button" class="btn btn-outline-light px-4 rounded-pill" :class="carts.length > 0 ? 'd-inline-block' : 'd-none'" @click="openRemoveAllModal">清空購物車</button>
                     </div>
                     <p class="fs-2 text-center h-100 py-5  mb-0" v-if="carts.length === 0">目前沒有訂單唷！！</p>
                     <ul class="list-unstyled " v-else>
@@ -39,7 +39,7 @@
                             <div class="ms-4 d-flex flex-column justify-content-between w-100">
                                 <div class="d-flex justify-content-between  mb-2 mb-lg-0">
                                     <p class="mb-0 fs-4">{{item.product.title}}</p>
-                                    <i class="bi bi-trash fs-5 btn btn-outline-light border-0 d-lg-block d-none"  @click="removeCartItem(item.id)"></i>
+                                    <i class="bi bi-trash fs-5 btn btn-outline-light border-0 d-lg-block d-none"  @click="openRemoveModal(item.id)"></i>
                                 </div>
 
                                 <div class="d-flex flex-column flex-md-row align-items-lg-center ">
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="d-lg-none d-flex align-items-center justify-content-between">
                                   <p class="mb-0 fs-6">總計：NT$ <span class="ms-2">{{item.total}}</span></p>
-                                  <i class="bi bi-trash fs-5 btn btn-outline-light border-0"  @click="removeCartItem(item.id)"></i>
+                                  <i class="bi bi-trash fs-5 btn btn-outline-light border-0"  @click="openRemoveModal(item.id)"></i>
                                 </div>
                             </div>
                         </li>
@@ -76,7 +76,7 @@
                     <div class="border p-4 mb-4">
                         <h4 class="fw-bold mb-4 pb-3 border-bottom">訂單資訊</h4>
                         <div class="pb-4 border-bottom border-light border-opacity-10 mb-4">
-                            <div class="mb-2 d-flex justify-content-between">
+                            <div class="mb-2 d-flex justify-content-between" :class="{'d-none': carts.length === 0}">
                                 <p class="mb-0">目前數量</p>
                                 <p class="mb-0"> 共 <span class="font-arimo">{{carts.length}}</span> 部</p>
                             </div>
@@ -111,24 +111,50 @@
     </section>
   </div>
 <LoadingComponent v-model:active="isLoading" id="cartPage"/>
+<DelAllModal  @remove-data="closeRemoveAllModal" ref="delAllModal"/>
+<DelModal :out-item="tempCart" @remove-data="closeRemoveModal(this.productID)" ref="delModal"/>
 </template>
 
 <script>
 import { mapActions, mapState } from 'pinia'
 import { useCartStore } from '@/stores/cartStore.js'
 import LoadingComponent from '../../components/LoadingComponent.vue'
+import DelAllModal from '../../components/frontDesk/DelAllModal.vue'
+import DelModal from '../../components/frontDesk/DelModal.vue'
 export default {
   components: {
-    LoadingComponent
+    LoadingComponent,
+    DelAllModal,
+    DelModal
   },
   data () {
     return {
-      couponCode: ''
+      couponCode: '',
+      tempCart: {},
+      productID: ''
     }
   },
   methods: {
     // 提取方法
-    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty', 'useCoupon'])
+    ...mapActions(useCartStore, ['getCart', 'removeCartAll', 'removeCartItem', 'changeCartQty', 'useCoupon']),
+    openRemoveAllModal () {
+      this.$refs.delAllModal.openModal()
+    },
+    closeRemoveAllModal () {
+      this.removeCartAll()
+      this.$refs.delAllModal.hideModal()
+    },
+    openRemoveModal (id) {
+      this.productID = id
+      const findArray = this.carts.find(item => item.id === id)
+      this.tempCart = findArray.product
+      console.log(this.tempCart)
+      this.$refs.delModal.openModal()
+    },
+    closeRemoveModal (id) {
+      this.removeCartItem(id)
+      this.$refs.delModal.hideModal()
+    }
   },
   computed: {
     // 提取資料

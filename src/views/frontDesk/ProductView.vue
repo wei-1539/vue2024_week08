@@ -3,7 +3,7 @@
     <section >
         <div class="container pb-7">
             <div class="row ">
-                <div class="col-md-7 d-flex flex-column  justify-content-center mb-lg-0 mb-4">
+                <div class="col-md-6 d-flex flex-column  justify-content-center mb-lg-0 mb-4">
                   <nav aria-label="breadcrumb ">
                         <ol class="breadcrumb d-lg-none bg-dark px-0 mb-3 ">
                             <li class="breadcrumb-item opacity-50 ">
@@ -14,18 +14,18 @@
                             <li class="opacity-25 px-2">/</li>
                             <li class="breadcrumb-item opacity-50 ">
                               <RouterLink to="/products" class="text-light text-decoration-none" >
-                                電影選單
+                                電影種類
                               </RouterLink>
                             </li>
                             <li class="opacity-25 px-2">/</li>
-                            <li class="breadcrumb-item " aria-current="page">明細</li>
+                            <li class="breadcrumb-item " aria-current="page">電影名稱</li>
                         </ol>
                     </nav>
                   <img class="w-75 mx-auto" style="object-fit=cover"
                         :src="product.imageUrl"
                         :alt="product.title">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <nav aria-label="breadcrumb ">
                         <ol class="breadcrumb bg-dark px-0 mb-2 d-none d-lg-flex ">
                             <li class="breadcrumb-item opacity-50 ">
@@ -36,11 +36,11 @@
                             <li class="opacity-25 px-2">/</li>
                             <li class="breadcrumb-item opacity-50 ">
                               <RouterLink to="/products" class="text-light text-decoration-none" >
-                                電影選單
+                                電影種類
                               </RouterLink>
                             </li>
                             <li class="opacity-25 px-2">/</li>
-                            <li class="breadcrumb-item " aria-current="page">明細</li>
+                            <li class="breadcrumb-item " aria-current="page">電影名稱</li>
                         </ol>
                     </nav>
                     <!--  電影資訊 -->

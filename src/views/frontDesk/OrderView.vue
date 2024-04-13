@@ -24,22 +24,27 @@
                 </li>
             </ul>
 
-            <div class="row ">
+            <div class="row gx-5">
               <div class="col-md-6  mb-mb-0 mb-4">
                 <div class="mb-lg-3 d-flex justify-content-between align-items-center border-bottom pb-2">
                   <h4 class="text-light ps-lg-3 ps-2 border-3  border-start border-danger">訂單明細</h4>
                   <h5 class="text-light  ps-lg-3 ps-2 ">總金額 NT$ {{order.total}}</h5>
                 </div>
-                <ul class="border-bottom py-lg-3 py-3 mx-0 list-unstyled">
-                  <li v-for="item in products" :key="item.id" class="row  mb-4">
+                <ul class="py-lg-3 py-4 mx-0 list-unstyled">
+                  <li v-for="item in products" :key="item.id" class="row  mb-4 border-bottom pb-4">
                       <img class="product__img" :src="item.product.imageUrl" :alt="item.product.title">
-                    <div class="col d-flex flex-column justify-content-between w-100 px-4">
+                    <div class="col d-flex flex-column justify-content-between w-100 ps-3 pe-4">
                       <div class="d-flex">
-                        <p class="mb-0">{{item.product.title}}</p>
+                        <p class="mb-0 fs-4">{{item.product.title}}</p>
                       </div>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <p class=" mb-0">{{item.qty}} / 週</p>
-                        <p class="lh-lg me-md-0 mb-0 "> NT$ {{item.final_total}}</p>
+                      <div class="d-flex flex-column justify-content-between">
+                        <p class=" mb-0">
+                          NT$ {{item.product.price}}
+                          <span class="ms-1">x</span>
+                          <span class="fs-6 ms-2"> {{item.qty}} </span>
+                          <span class="fs-6 ms-2"> / {{item.product.unit}}</span>
+                        </p>
+                        <p class="lh-lg me-md-0 mb-0 "> 總計：NT$ {{item.final_total}}</p>
                       </div>
                     </div>
                   </li>
@@ -217,16 +222,12 @@ export default {
     white-space: nowrap;
   }
   .product__img{
-    width: 110px;
+    width: 125px;
     object-fit: cover;
   }
   @media (max-width:768px) {
     .text-sm{
       font-size: 0.8rem;
-    }
-    .product__img{
-      width: 100px;
-      object-fit: cover;
     }
   }
 </style>

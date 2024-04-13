@@ -26,8 +26,8 @@
 
             <RouterLink to="/cart" class=" btn btn-outline-light rounded-pill text-decoration-none mb-4 d-inline-block"><i
                     class="bi bi-caret-left-fill"></i>返回購物車</RouterLink>
-            <div class="row">
-                <div class="col-md-8 mb-8 mb-lg-0">
+            <div class="row gx-5">
+                <div class="col-md-8 mb-4 mb-lg-0">
                     <div class="d-lg-flex  justify-content-between mb-4 pb-2 border-bottom">
                         <p class="fs-4 mb-lg-0 mb-3 ">目前有 {{carts.length}} 部</p>
                         <div class=" d-lg-flex flex-lg-row flex-column align-items-lg-center justify-content-between">
@@ -37,14 +37,15 @@
                         </div>
                     </div>
                     <ul class="list-unstyled ">
-                        <li class="d-flex mb-lg-4 mb-5" v-for="item in carts" :key="item.id">
+                        <li class="d-flex mb-lg-4 mb-4 border-bottom pb-4" v-for="item in carts" :key="item.id">
                             <img :src="item.product.imageUrl"
-                                :alt="item.product.title" style="width: 100px; object-fit: cover;">
+                                :alt="item.product.title" style="width: 125px; object-fit: cover;">
                             <div class="ms-4 d-flex flex-column justify-content-between w-100">
-                                <p class="mb-0 fs-5">{{item.product.title}}</p>
-                                <div class="d-flex justify-content-between flex-column flex-lg-row">
-                                    <p class="mb-lg-0 mb-3 fs-6">NT$ {{item.product.price}}
-                                      <span>x {{item.qty}} </span>
+                                <p class="mb-0 fs-4">{{item.product.title}}</p>
+                                <div class="">
+                                    <p class=" mb-2 fs-6">NT$ {{item.product.price}}
+                                      <span class="ms-1">x</span>
+                                      <span class="fs-6 ms-2"> {{item.qty}} </span>
                                       <span class="fs-6 ms-2"> / {{item.product.unit}}</span>
                                     </p>
                                     <p class="mb-0 fs-6">總計：NT$ <span class="ms-2">{{item.final_total}}</span></p>

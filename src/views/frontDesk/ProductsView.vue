@@ -17,16 +17,16 @@
             <ul class="row list-unstyled mb-0">
                 <li class="col-lg-3" v-for="item in products" :key="item.id" data-aos="fade-right" >
                     <div class="card rounded-2 overflow-hidden border-0 mb-4 position-relative position-relative">
-                        <RouterLink :to="`/product/${item.id}`" href=""  class="text-decoration-none">
+                        <RouterLink :to="`/product/${item.id}`" href=""  class="text-decoration-none imgControl">
                           <div class="position-relative imgHover">
-                            <img :src="item.imageUrl" class="card-img-top rounded-0" alt="...">
+                            <img :src="item.imageUrl" class="card-img-top rounded-0" :alt="item.title">
                           </div>
                           <!-- 收藏最愛 -->
                           <!-- <a href="#" class="text-dark">
                               <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
                           </a> -->
-                          <div class="card-body p-0 text-center">
-                              <h5 class="mb-0 mt-3 text-muted ">{{item.title}}</h5>
+                          <div class="card-body p-0 text-center my-3 d-flex flex-column align-items-center">
+                              <h5 class="mb-0 text-muted ">{{item.title}}</h5>
                               <div class="d-flex  justify-content-center align-items-center my-2">
                                 <p class="mb-0 text-danger fw-bold fs-5" v-if="item.origin_price === item.price">NT$ {{item.price}}</p>
                                 <div v-else>
@@ -34,9 +34,9 @@
                                   <p class="mb-0 text-danger fw-bold fs-5 d-inline-block">NT$ {{item.price}}</p>
                                 </div>
                               </div>
+                        <button class="btn btn-outline-danger  w-50  position-relative z-10"  @click.prevent="this.addToCart(item.id)">加入購物車</button>
                           </div>
                         </RouterLink>
-                        <button class="btn btn-outline-danger mb-3 w-50 mx-auto " @click="this.addToCart(item.id)">加入購物車</button>
                     </div>
                 </li>
             </ul>
@@ -168,7 +168,7 @@ export default {
       font-size: 1.25rem;
   }
 
-  .imgHover:hover:before {
+  .imgControl:hover .imgHover::before {
       background: rgb(27, 24, 23);
       opacity: .6;
   }
@@ -178,6 +178,9 @@ export default {
   }
   #productNav li:hover{
     opacity: 1;
+  }
+  .z-10{
+    z-index: 10;
   }
   .linkActive{
     opacity: 1 !important;

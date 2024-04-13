@@ -24,11 +24,13 @@
                             <div class="col d-flex flex-column justify-content-between w-100">
                                 <div class="d-flex justify-content-between">
                                     <p class="m-0">{{item.product.title}}</p>
-                                    <i class="bi bi-x-circle fs-5" style="cursor:pointer" @click="removeCartItem(item.id)"></i>
+                                    <i class="bi bi-x-circle fs-5" style="cursor:pointer" @click="openRemoveModal(item.id)"></i>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <p class="m-0">NT$ {{item.total}}</p>
-
+                                    <div class="d-flex">
+                                        <p class="m-0">NT$ {{item.total}}</p>
+                                        <span class="ms-2"> / {{item.product.unit}}</span>
+                                    </div>
                                     <!-- 數量 -->
                                     <div class="d-flex align-items-center">
                                         <!-- + -->
@@ -41,7 +43,6 @@
                                         <button type="button" class="btn btn-outline-light border-0" @click="item.qty++;changeCartQty(item.id,item.qty)">
                                             <i class="bi bi-plus "></i>
                                         </button>
-                                        <span> / {{item.product.unit}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -63,6 +64,7 @@
     <!-- cart Modal E -->
     <LoadingComponent v-model:active="isLoading" id="cartModal"/>
     <DelAllModal  @remove-data="closeRemoveAllModal" ref="delAllModal"/>
+    <DelModal :out-item="tempCart" @remove-data="closeRemoveModal(this.productID)" ref="delModal"/>
 </template>
 
 <script>
@@ -72,16 +74,18 @@ import LoadingComponent from '../../components/LoadingComponent.vue'
 // 載入Modal的方法
 import modalMixin from '../../mixins/modalMixin.js'
 import DelAllModal from './DelAllModal.vue'
-
+import DelModal from './DelModal.vue'
 export default {
   components: {
     LoadingComponent,
-    DelAllModal
+    DelAllModal,
+    DelModal
   },
   mixins: [modalMixin],
   data () {
     return {
-      tempCart: {}
+      tempCart: {},
+      productID: ''
     }
   },
   methods: {
@@ -93,6 +97,17 @@ export default {
     closeRemoveAllModal () {
       this.removeCartAll()
       this.$refs.delAllModal.hideModal()
+    },
+    openRemoveModal (id) {
+      this.productID = id
+      const findArray = this.carts.find(item => item.id === id)
+      this.tempCart = findArray.product
+      console.log(this.tempCart)
+      this.$refs.delModal.openModal()
+    },
+    closeRemoveModal (id) {
+      this.removeCartItem(id)
+      this.$refs.delModal.hideModal()
     }
 
   },
