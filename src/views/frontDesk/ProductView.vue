@@ -2,8 +2,8 @@
   <div class="bg-dark text-light py-lg-7 py-4">
     <section >
         <div class="container overflow-hidden pb-7">
-            <div class="row ">
-                <div class="col-md-6 d-flex flex-column  justify-content-center mb-lg-0 mb-4">
+            <div class="row gx-6">
+                <div class="col-md-6  d-flex flex-column  justify-content-center mb-lg-0 mb-4">
                   <nav aria-label="breadcrumb ">
                         <ol class="breadcrumb d-lg-none bg-dark px-0 mb-3 ">
                             <li class="breadcrumb-item opacity-50 ">
@@ -25,7 +25,7 @@
                         :src="product.imageUrl"
                         :alt="product.title">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 g-lg-0">
                     <nav aria-label="breadcrumb ">
                         <ol class="breadcrumb bg-dark px-0 mb-2 d-none d-lg-flex ">
                             <li class="breadcrumb-item opacity-50 ">
