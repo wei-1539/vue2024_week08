@@ -1,7 +1,7 @@
 <template>
   <div class="bg-dark text-light py-lg-7 py-4">
     <section >
-        <div class="container pb-7">
+        <div class="container overflow-hidden pb-7">
             <div class="row ">
                 <div class="col-md-6 d-flex flex-column  justify-content-center mb-lg-0 mb-4">
                   <nav aria-label="breadcrumb ">
@@ -21,7 +21,7 @@
                             <li class="breadcrumb-item " aria-current="page">電影名稱</li>
                         </ol>
                     </nav>
-                  <img class="w-75 mx-auto" style="object-fit=cover"
+                  <img class="w-100 mx-auto" style="object-fit:cover; max-width:425px;"
                         :src="product.imageUrl"
                         :alt="product.title">
                 </div>
