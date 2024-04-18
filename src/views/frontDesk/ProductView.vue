@@ -18,7 +18,7 @@
                               </RouterLink>
                             </li>
                             <li class="opacity-25 px-2">/</li>
-                            <li class="breadcrumb-item " aria-current="page">電影名稱</li>
+                            <li class="breadcrumb-item " aria-current="page">{{product.title}}</li>
                         </ol>
                     </nav>
                   <img class="w-100 mx-auto" style="object-fit:cover; max-width:425px;"
@@ -40,7 +40,7 @@
                               </RouterLink>
                             </li>
                             <li class="opacity-25 px-2">/</li>
-                            <li class="breadcrumb-item " aria-current="page">電影名稱</li>
+                            <li class="breadcrumb-item " aria-current="page">{{product.title}}</li>
                         </ol>
                     </nav>
                     <!--  電影資訊 -->

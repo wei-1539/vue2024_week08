@@ -50,8 +50,8 @@
                     </ul>
                 </div>
                 <div class="modal-footer ">
-                    <div class="d-flex w-100 justify-content-between align-items-center">
-                        <div class="d-flex flex-column ">
+                    <div class="d-flex w-100 justify-content-end  align-items-center" :class="{'justify-content-between': carts.length !== 0}">
+                        <div class="d-flex flex-column " v-if="carts.length !== 0">
                             <p class="m-0">總金額</p>
                             <p class="m-0">NT$ {{total}}</p>
                         </div>
