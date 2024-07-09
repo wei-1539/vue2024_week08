@@ -18,12 +18,12 @@
       <img class="position-absolute cameraBody" src="https://i.ibb.co/jRQFSSN/2.png" alt="">
       <img class="position-absolute cameraLight" src="https://i.ibb.co/3h9nFX9/1.png" alt=""> -->
 
-      <img class="position-absolute camera2Inside" src="https://i.ibb.co/h9ysGJn/image.png" alt="">
-      <img class="position-absolute camera2Circle1 rotate" src="https://i.ibb.co/0qkNd0m/left.png" alt="">
-      <img class="position-absolute camera2Circle2 rotate" src="https://i.ibb.co/6D4VM21/right.png" alt="">
-      <img class="position-absolute camera2Body" src="https://i.ibb.co/ZKBqzTV/3.png" alt="">
-      <img class="position-absolute camera2Light" src="https://i.ibb.co/3h9nFX9/1.png" alt="">
-      <img class="position-absolute camera2Text" src="https://i.ibb.co/rs4cGJh/text.png" alt="">
+      <img class="position-absolute camera2Inside" src="../../public/circleout.png" alt="機殼">
+      <img class="position-absolute camera2Circle1 rotate" src="../../public/left.png" alt="左邊底片">
+      <img class="position-absolute camera2Circle2 rotate" src="../../public/right.png" alt="右邊底片">
+      <img class="position-absolute camera2Body" src="../../public/body.png" alt="機身">
+      <img class="position-absolute camera2Light" src="../../public/light.png" alt="燈光" >
+      <img class="position-absolute camera2Text" src="../../public/text.png" alt="文字" >
   </VueLoading>
 </template>
 

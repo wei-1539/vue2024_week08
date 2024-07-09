@@ -255,6 +255,9 @@ export default {
     // this.getProduct()
     this.getCategoryData()
     window.scrollTo({ behavior: 'smooth', top: 0 })
+    // console.log(
+    //   window.history
+    // )
   },
   created () {
     this.$watch(
